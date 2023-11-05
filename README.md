@@ -1,7 +1,8 @@
 # DATA440_Project
 Automations and Workflows project
 
-In this project, I'd like to simulate the immune response in a body when presented with a stressor. This would hopefully involve the simulation of immune cell proliferation, cytokines, chemokines, receptors, and quantifiable levels of several types of immune cells in the form of charts. The user may input the number of receptors on specific immune cells, type of stress (chronic, acute), and starting levels of immune cells. The output will show a timelapse of how the stressor has altered the immune response. 
+In this project, I'd like to simulate an aspect of the immune response in a body when presented with a stressor. This involves the simulation cytokine and chemokine levels. The project will first gather summary statistics from a cytokine dataset in order to determine the baseline cytokine levels in a healthy human adult body. The user may generate a random individual's cytokine data depending on the current data provided. The random individual will have cytokine levels dependent on the dataset's mean and variance of each cytokine level.
+
 
 Data are sourced from:
 - https://duke-hhis.github.io/reference-range/#/
