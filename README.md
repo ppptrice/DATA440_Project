@@ -7,7 +7,7 @@ Current objectives
 ---
 - write functions to visualize summary statistics of the data depending on user input
 - generate random data with a function based on the cytokine data
-  - model the distribution of the data (normal, poisson, etc.)
+-- model the distribution of the data (normal, poisson, etc.)
 
 Data are sourced from:
 - https://duke-hhis.github.io/reference-range/#/
