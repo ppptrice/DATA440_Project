@@ -80,3 +80,20 @@ class dataset:
             data_hist.set_title('Observed data')
             new_hist.set_title('Generated data')
         return f
+    
+    def generate_records(self, 
+                        cols,
+                        #add_in_place = False,
+                        n_records = 1,
+                        distribution = 'poisson',
+                        ):
+        df = pd.DataFrame()
+        if distribution == 'poisson':
+            for col in cols:
+                df[col] = np.round(np.random.poisson(lam = self.get_means(cols = col), size = n_records), decimals = 2)
+        elif distribution == 'normal':
+            for col in cols:
+                df[col] = np.round(np.random.normal(loc = self.get_means(cols = col), 
+                                                    scale = self.get_variance(cols = col), 
+                                                    size = n_records), decimals = 2)
+        return df

@@ -31,7 +31,7 @@ st.header('Summary statistics of selected cytokines')
 st.dataframe(cyto_dataset.get_summary(cols = selected_cyto))
 
 st.header('Simulated histogram')
-cyto_option = st.sidebar.selectbox('Cytokine data to generate:', unique_cyto)
+cyto_option = st.sidebar.selectbox('Histogram cytokine:', unique_cyto)
 'Selected cytokine: ', cyto_option
 
 dist_option = st.sidebar.selectbox('Type of distribution:', ['poisson', 'normal'])
@@ -53,6 +53,18 @@ if st.button('Correlation Heatmap'):
         f, ax = plt.subplots()
         ax = sns.heatmap(corr, mask=mask, vmax=1, square=True)
     st.pyplot(f)
+    
+st.sidebar.header('Cytokine selection for data generation')
+    
+generate_cyto = st.sidebar.multiselect('Cytokines to generate', unique_cyto, unique_cyto)
+dist_option2 = st.sidebar.selectbox('Type of distribution to generate:', ['poisson', 'normal'])
+num_records = st.sidebar.slider('Number of records to generate', 1, 500, 250)
+
+
+st.header('Cytokine dataframe generation')
+'Selected distribution: ', dist_option2
+#'Cytokines generated', generate_cyto
+st.dataframe(cyto_dataset.generate_records(cols = generate_cyto, distribution = dist_option2, n_records = num_records))
 
 def streamlit_defaults():
     '''
