@@ -9,6 +9,7 @@ streamlit = "*"
 sklearn = "*"
 numpy = "*"
 matplotlib = "*"
+seaborn = "*"
 
 [dev-packages]
 

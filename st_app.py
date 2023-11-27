@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
 from dataset_class import dataset
 
 
@@ -38,6 +40,19 @@ dist_option = st.sidebar.selectbox('Type of distribution:', ['poisson', 'normal'
 hist_fig = cyto_dataset.generate_hist(col = cyto_option, distribution = dist_option)
 
 st.pyplot(hist_fig)
+
+if st.button('Correlation Heatmap'):
+    st.header('Correlation Heatmap')
+    df_selected_cyto.to_csv('output.csv',index=False)
+    corr_df = pd.read_csv('output.csv')
+
+    corr = corr_df.corr()
+    mask = np.zeros_like(corr)
+    mask[np.triu_indices_from(mask)] = True
+    with sns.axes_style("white"):
+        f, ax = plt.subplots()
+        ax = sns.heatmap(corr, mask=mask, vmax=1, square=True)
+    st.pyplot(f)
 
 def streamlit_defaults():
     '''
