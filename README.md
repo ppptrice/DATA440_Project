@@ -23,3 +23,13 @@ Integrate interactivity via user input:
 
 Data are sourced from:
 - https://duke-hhis.github.io/reference-range/#/
+
+To run the streamlit website:
+- Clone the repository
+- Navigate to the DATA440_Project folder in command prompt (powershell, terminal, etc.)
+- run: > pipenv shell
+- > pipenv --ignore-pipfile
+- > streamlit run st_app.py
+  > 
+  > 
+- 
