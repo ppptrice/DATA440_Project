@@ -28,7 +28,9 @@ To run the streamlit website:
 - Clone the repository
 - Navigate to the DATA440_Project folder in command prompt (powershell, terminal, etc.)
 - run:
-- > pipenv shell
-- > pipenv install --ignore-pipfile
-- > streamlit run st_app.py
+> pipenv shell
+
+> pipenv install --ignore-pipfile
+
+> streamlit run st_app.py
 - The streamlit webstie should pop up in your browser!
