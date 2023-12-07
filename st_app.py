@@ -5,31 +5,51 @@ import seaborn as sns
 import numpy as np
 from dataset_class import dataset
 
-
+# Header of the website
 st.write("""
 # Simple simulation of normal human cytokine levels
+The following tools help to coceptualize, visualize, and explore different cytokines of the immune system.
+First, what is a cytokine?
+
+A cytokine is a broad classifier for different groups of small proteins that are secreted 
+to impact another cell. They are important in several different areas:
+- cell signalling
+- immune system functions
+- physiological processes
+""")
+
+# Description of entire dataframe
+st.write("""
 Below is a section of a dataframe containing many different cytokine levels of normal, healthy humans. 
 The data are measured in mean fluorescence intensity (MFI).
 """)
 
+# Creation of a "dataset" class that allows specific functions to be called later
 cyto_dataset = dataset('norm_cytokine_data.csv')
 df = cyto_dataset.get_dataframe()
+st.write(df.head()) # inserts dataframe with all data
 
-st.write(df.head())
+st.sidebar.header('Cytokine selection') # creates sidebar with title
 
-st.sidebar.header('Cytokine selection')
-
+# Creating selection of cytokines using sidebar
 unique_cyto = df.columns.values
-selected_cyto = st.sidebar.multiselect('Cytokines', unique_cyto, unique_cyto)
+selected_cyto = st.sidebar.multiselect('Cytokines used in', unique_cyto, unique_cyto)
 df_selected_cyto = df[selected_cyto]
 
+# 
 st.header('Dataframe of selected cytokines')
+st.write("""The following dataframe displays all cytokines that are selected on the sidebar to the left, 
+under 'Cytokine selection'.
+""")
+st.write('Current cytokines: ' + str([cyto for cyto in selected_cyto]))
 st.write('Data Dimension: ' + str(df_selected_cyto.shape[0]) + ' rows and ' + str(df_selected_cyto.shape[1]) + ' columns.')
 st.dataframe(df_selected_cyto)
 
+# Summary statistics dataframe generation
 st.header('Summary statistics of selected cytokines')
 st.dataframe(cyto_dataset.get_summary(cols = selected_cyto))
 
+# Displays a histogram of cytokine data generated depending on the selected distribution in the sidebar
 st.header('Simulated histogram')
 cyto_option = st.sidebar.selectbox('Histogram cytokine:', unique_cyto)
 'Selected cytokine: ', cyto_option

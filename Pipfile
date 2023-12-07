@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 pandas = "*"
 streamlit = "*"
-sklearn = "*"
+scikit-learn = "*"
 numpy = "*"
 matplotlib = "*"
 seaborn = "*"
