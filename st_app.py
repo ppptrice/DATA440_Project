@@ -35,7 +35,8 @@ st.sidebar.header('Cytokine selection') # creates sidebar with title
 
 # Creating selection of cytokines using sidebar
 unique_cyto = df.columns.values
-selected_cyto = st.sidebar.multiselect('Cytokines used in data selection', unique_cyto, unique_cyto)
+selected_cyto = st.sidebar.multiselect('Cytokines used in data selection', unique_cyto, unique_cyto,
+                                       placeholder = 'Cytokines go here!')
 df_selected_cyto = df[selected_cyto]
 
 
@@ -48,7 +49,10 @@ under 'Cytokine selection'.
 """)
 st.write('Current cytokines: ' + str([cyto for cyto in selected_cyto]))
 st.write('Data Dimension: ' + str(df_selected_cyto.shape[0]) + ' rows and ' + str(df_selected_cyto.shape[1]) + ' columns.')
-st.dataframe(df_selected_cyto)
+if len(selected_cyto) != 0:
+    st.dataframe(df_selected_cyto)
+else: 
+    st.markdown('#### Please select at least one cytokine to display data.')
 
 
 ############## SUMMARY STATISTICS
@@ -58,8 +62,10 @@ st.divider()
 st.write('''The following dataframe displays simple summary statistics of the data.
 They will also adjust to the selected cytokines on the sidebar under 'Cytokine selection'
 ''')
-st.dataframe(cyto_dataset.get_summary(cols = selected_cyto))
-
+if len(selected_cyto) != 0:
+    st.dataframe(cyto_dataset.get_summary(cols = selected_cyto))
+else: 
+    st.write('Please select at least one cytokine to display data.')
 
 ############## HISTOGRAM
 # Displays a histogram of cytokine data generated depending on the selected distribution in the sidebar
@@ -92,26 +98,34 @@ st.write("""This heatmap shows any possible correlations between the selected cy
 It may be useful to discern relationships between certain cytokines (e.g. pro-inflammatory cytokines may
 be correlated with each other).
 """)
-df_selected_cyto.to_csv('output.csv',index=False)
-corr_df = pd.read_csv('output.csv')
 
-corr_nums = st.checkbox(label = 'Display correlation numbers on heatmap?')
+if len(selected_cyto) != 0:
+    df_selected_cyto.to_csv('output.csv',index=False)
+    corr_df = pd.read_csv('output.csv')
 
-corr = corr_df.corr()
-mask = np.zeros_like(corr)
-mask[np.triu_indices_from(mask)] = True
-with sns.axes_style("white"):
-    f, ax = plt.subplots()
-    ax = sns.heatmap(corr, mask=mask, vmax=1, vmin=-1, square=True,
-                     annot=corr_nums, fmt=".2f", linewidth = .5, cmap='vlag',
-                     annot_kws={"size": 30 / np.sqrt(len(corr))})
-st.pyplot(f)
+    corr_nums = st.checkbox(label = 'Display correlation numbers on heatmap?')
+
+    corr = corr_df.corr()
+    mask = np.zeros_like(corr)
+    mask[np.triu_indices_from(mask)] = True
+    with sns.axes_style("white"):
+        f, ax = plt.subplots()
+        ax = sns.heatmap(corr, mask=mask, vmax=1, vmin=-1, square=True,
+                         annot=corr_nums, fmt=".2f", linewidth = .5, cmap='vlag',
+                         annot_kws={"size": 30 / np.sqrt(len(corr))})
+    st.pyplot(f)
+    
+else: 
+    st.write('Please select at least one cytokine to display correlation heatmap.')
+    
+
 
 
 ############### GENERATED CYTOKINE DATA
 st.sidebar.header('Cytokine selection for data generation')
     
-generate_cyto = st.sidebar.multiselect('Cytokines to generate', unique_cyto, unique_cyto)
+generate_cyto = st.sidebar.multiselect('Cytokines to generate', unique_cyto, unique_cyto,
+                                      placeholder = 'Cytokines go here!')
 dist_option2 = st.sidebar.selectbox('Type of distribution to generate:', ['poisson', 'normal', 'negative binomial'])
 num_records = st.sidebar.slider('Number of records to generate', 1, 500, 250)
 
