@@ -145,6 +145,7 @@ else:
 
 
 ################ removes the bottom text
+# this is from ron's function provided in the example streamlit exercises on github
 def streamlit_defaults():
     '''
     Remove some auto-generated stuff by streamlit
