@@ -90,7 +90,7 @@ cyto_option = st.sidebar.selectbox('Histogram cytokine:', unique_cyto)
 dist_option = st.sidebar.selectbox('Type of distribution:', ['poisson', 'normal', 'negative binomial'])
 'Selected distribution: ', dist_option
 
-if dist_option == 'negative binomial':
+if dist_option == 'negative binomial':              # displays a new 'prob' option if negative binomial is selected
     nbinom_prob = st.sidebar.number_input(label = 'Insert the probability for the negative binomial distribution',
                                           min_value = 0.000001, max_value = 1.0, value = 0.5, step = 0.01)
     hist_fig = cyto_dataset.generate_hist(col = cyto_option, distribution = dist_option, prob = nbinom_prob)
@@ -101,7 +101,7 @@ st.pyplot(hist_fig)
 
 
 ############ CORRELATION HEATMAP
-#if st.button('Correlation Heatmap'):
+# displayes correlation heatmap with selected cytokines from the sidebar
 st.header('''Correlation Heatmap
 ---''')
 st.write("""This heatmap shows any possible correlations between the selected cytokines on the sidebar.
@@ -144,7 +144,8 @@ st.divider()
 st.write('''Using the sidebar, you can generate your own data using the specified parameters!
 Below is the dataframe you created.
 ''')
-#'Cytokines generated', generate_cyto
+
+# there is an if else statement to have a 'prob' parameter pop up in the sidebar if negative binomial is selected
 if dist_option2 == 'negative binomial':
     nbinom_prob2 = st.sidebar.number_input(label = 'Input the probability for the negative binomial distribution',
                                           min_value = 0.000001, max_value = 1.0, value = 0.5, step = 0.01)
@@ -154,7 +155,7 @@ else:
 
 
 ################ removes the bottom text
-# this is from ron's function provided in the example streamlit exercises on github
+# this is from Ron's function provided in the example streamlit exercises on github
 def streamlit_defaults():
     '''
     Remove some auto-generated stuff by streamlit
