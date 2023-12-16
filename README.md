@@ -63,9 +63,27 @@ The last section allows for generation of a downloadable dataframe using specifi
 multiselect dropdown. It has similar parameters to the previous histogram, but there is now the option to change how many 
 records/rows are in the dataframe. 
 
+### Notes on the sidebar
+The sidebar to the left controls the content of the page. The first section 'Cytokine selection' is for use through the selected cytokines dataframe to 
+the correlation heatmap. It has three parameters:
+- A multiselect option for cytokine selection
+- A single selection for the cytokine to be displayed in the histogram
+- A single selection for the type of distribution in the histogram
+
+The second section 'Cytokine selection for data generation' has parameters pertaining to the 'Cytokine Dataframe Generation' section at the bottom.
+It also has three paramters:
+- Multiselect for cytokines
+- Slider to change number of rows in the dataframe
+- Single selection for type of distribution
+
+Please note that selecting 'negative binomial' will have a 'probability' popup where the user can adjust the probability used
+in the data generation process for negative binomial distributions!
 
 
 
+
+Additional notes
+---
 
 Data are sourced from:
 - https://duke-hhis.github.io/reference-range/#/
@@ -79,4 +97,5 @@ To run the streamlit website:
 > pipenv install --ignore-pipfile
 
 > streamlit run st_app.py
-- The streamlit website should pop up in your browser!
+
+The streamlit website should pop up in your browser!
