@@ -79,8 +79,17 @@ It also has three paramters:
 Please note that selecting 'negative binomial' will have a 'probability' popup where the user can adjust the probability used
 in the data generation process for negative binomial distributions!
 
+Notes on dataset_class.py
+---
+The dataset_class.py file contains code for the creation of a class that has functions
+for exploring a dataset and simulated data. While this is what is used in the streamlit website, it does not have to be specific to cytokine data. The file is heavily commented, however the important functions will still be defined below:
 
+#### load_data
+This function is a private method to clean data if need be. The original cytokine required a few tweaks to make it useable, but otherwise this function does not do much if the data is already clean/in dataframe format already.
 
+#### get_dataframe, get_means, get_variance
+All of these functions serve to retrieve data from the self.data_summary attribute that is initialized when the class is created. A dataframe is returned. The names are self explanatory, but get_means and get_variances have a 'cols' parameter which should be a list of strings corresponding to columns in the dataset. For example:
+> dataset.get_means(cols = ['TNF-alpha', 'IL-4'])
 
 Additional notes
 ---
