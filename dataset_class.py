@@ -51,26 +51,27 @@ class dataset:
     
     def get_dataframe(self):                     # returns raw dataframe
         '''
-        Returns the dataframe
+        Returns the dataframe.
         '''
         return self.data
     
     def get_means(self, cols = None):            # returns MEANS of the summary for specified columns
         '''
         Returns the means of the columns specified.
-        'cols' is a list of strings with the columns in the dataframe 
+        'cols' is a list of strings with the names of columns in the dataframe 
         '''
         return self.get_summary(cols).iloc[1]
     
     def get_variance(self, cols = None):         # returns VARIANCES of the summary for specified columns
         '''
-        Returns the variance of the columns specified
+        Returns the variance of the columns specified.
+        'cols' is a list of strings with the names of columns in the dataframe
         '''
         return self.get_summary(cols).iloc[2]
     
     def generate_hist(self,                      # this function generates the histogram for a defined distribution
                       col:list = None,                # only one column can be selected at a time
-                      n_records:int = 126, 
+                      n_records:int = 126,            # number of records to generate
                       compare_dists:bool = True,      # this parameter is true if you want to return only the new/modelled histogram,
                                                  # and not the distribution ofthe actual data
                       distribution:str = 'poisson',    # default dist. is poisson
@@ -123,7 +124,10 @@ class dataset:
                          distribution = 'poisson',
                          prob = 0.5
                          ):
-        
+        '''
+        Returns a dataframe containing randomly-generated values as determined by the specified distributions.
+        distribution = ['poisson', 'normal', 'negative binomial']
+        '''
         df = pd.DataFrame()
         if distribution == 'poisson':            # All values are rounded, but some won't have decimals anyway
             for col in cols:

@@ -9,7 +9,7 @@ from dataset_class import dataset
 st.write("""
 # Simple Simulation of Normal Human Cytokine Levels 
 ---
-The following tools help to coceptualize, visualize, and explore different cytokines of the immune system.
+The following tools help to conceptualize, visualize, and explore different cytokines of the immune system.
 First, what is a cytokine?
 
 A cytokine is a broad classifier for different groups of small proteins that are secreted 
@@ -17,12 +17,22 @@ to impact another cell. They are important in several different areas:
 - cell signalling
 - immune system functions
 - physiological processes
+
+Cytokines all have different functions, with some sharing similar functions and others having 
+antagonistic properties (pro-inflammatory vs. anti-inflammatory).
+Important cytokines to note are:
+- Tumor necrosis factor alpha (TNF-alpha): promotes pro-inflammatory mechanisms causing inflammation and necrosis/apoptosis
+- Interferon gamma (IFN-gamma): promotes immune response against pathogens, classified as pro-inflammatory
+- Interleukin-13 (IL-13): regulates allergic responses, classified as anti-inflammatory
+- Interleukin-4 (IL-4): regulates immune response, inflammation, T-cell development, classified as anti-inflammatory 
+
+Not all cytokines will be described in this project.
 """)
 
 # Description of entire dataframe
 st.write("""
 Below is a section of a dataframe containing many different cytokine levels of normal, healthy humans. 
-The data are measured in mean fluorescence intensity (MFI).
+The data are measured in mean fluorescence intensity (MFI). Higher MFI indicates higher cytokine levels.
 """)
 
 ############ ENTIRE DATASET
@@ -49,8 +59,8 @@ under 'Cytokine selection'.
 """)
 st.write('Current cytokines: ' + str([cyto for cyto in selected_cyto]))
 st.write('Data Dimension: ' + str(df_selected_cyto.shape[0]) + ' rows and ' + str(df_selected_cyto.shape[1]) + ' columns.')
-if len(selected_cyto) != 0:
-    st.dataframe(df_selected_cyto)
+if len(selected_cyto) != 0:        # checks if zero cytokines are selected and prevents throwing an error
+    st.dataframe(df_selected_cyto) # could probably use 'try' and 'except' though
 else: 
     st.markdown('#### Please select at least one cytokine to display data.')
 
