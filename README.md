@@ -91,6 +91,14 @@ This function is a private method to clean data if need be. The original cytokin
 All of these functions serve to retrieve data from the self.data_summary attribute that is initialized when the class is created. A dataframe is returned. The names are self explanatory, but get_means and get_variances have a 'cols' parameter which should be a list of strings corresponding to columns in the dataset. For example:
 > dataset.get_means(cols = ['TNF-alpha', 'IL-4'])
 
+#### generate_hist(col, n_records, compare_dists, distribution, prob)
+This method generates a histogram depending on the parameters given. 'col' is a list with a singular string of a column name in the dataset. 'n_records' refers to the size of the data to be generated and used in the histogram. 'compare_dists' is not used in the streamlit, but is set to 'True' by default in order to display the original data. 'distribution' changes the distribution used to generate data and must be within this list ['poisson', 'normal'. 'negative binomial']. numpy is used for each distribution. 'prob' is for the negative binomial distribution and changes the location/shape of the distribution. For example:
+> dataset.generate_hist(col = ['TNF-alpha'], n_records = 126, compare_dists = True, distribution = 'negative binomial', prob = 0.25)
+
+#### generate_records(cols, n_records, distribution, prob)
+This method has very similar attributes to generate_hist. 'cols' is a list containing strings corresponding to the names of the columns in the dataset. 'n_records' refers to the number of rows in the dataframe. This method returns a dataframe with the specified columns, number of records, and distribution. This is used for the dataframe generation in the last section of the streamlit page.
+                    
+
 Additional notes
 ---
 
