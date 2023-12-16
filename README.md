@@ -96,7 +96,8 @@ This method generates a histogram depending on the parameters given. 'col' is a 
 > dataset.generate_hist(col = ['TNF-alpha'], n_records = 126, compare_dists = True, distribution = 'negative binomial', prob = 0.25)
 
 #### generate_records(cols, n_records, distribution, prob)
-This method has very similar attributes to generate_hist. 'cols' is a list containing strings corresponding to the names of the columns in the dataset. 'n_records' refers to the number of rows in the dataframe. This method returns a dataframe with the specified columns, number of records, and distribution. This is used for the dataframe generation in the last section of the streamlit page.
+This method has very similar attributes to generate_hist. 'cols' is a list containing strings corresponding to the names of the columns in the dataset. 'n_records' refers to the number of rows in the dataframe. This method returns a dataframe with the specified columns, number of records, and distribution. This is used for the dataframe generation in the last section of the streamlit page. Example:
+> dataset.generate_records(cols = ['IFN-gamma, IL-21'], n_records = 25, distribution = 'poisson')
                     
 
 Additional notes
@@ -115,4 +116,6 @@ To run the streamlit website:
 
 > streamlit run st_app.py
 
-The streamlit website should pop up in your browser!
+The streamlit website should now pop up in your browser.
+
+Thank you for reading all the way through my readme!
