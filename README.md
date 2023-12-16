@@ -103,6 +103,8 @@ This method has very similar attributes to generate_hist. 'cols' is a list conta
 Additional notes
 ---
 
+It is interesting to note that in the heatmap, pro-inflammatory cytokines/cytokines with similar functions are higly correlated, such as IL-18 and IFN-gamma. Similarly, anti-inflammatory cytokines IL-4 and IL-13 are highly correlated!
+
 Data are sourced from:
 - https://duke-hhis.github.io/reference-range/#/
 
