@@ -1,8 +1,9 @@
 # DATA440_Project
 Automations and Workflows project
 
-In this project, I'd like to simulate an aspect of the immune response in a body when presented with a stressor. This involves the simulation of cytokine and chemokine levels. The project will gather summary statistics from a cytokine dataset in order to determine the baseline cytokine levels in a healthy human adult body. The user may generate a random individual's cytokine data depending on the current data provided. The random individual will have cytokine levels dependent on the dataset's mean and variance of each cytokine level.
-The user can select different cytokines to explore using the sidebar in streamlit.
+In this project, I take a look at a specific aspect of the human body that regulates immune system functions, cytokines. Cytokines act as signalling molecules to modulate key components of the immune system, like helper T cells, macrophage recruitment, B cells, and numerous other cells/processes. Cytokines are measured here in mean fluorescence intensity (MFI), with a higher number indicating higher cytokine levels. The project will explore a cytokine dataset to display the relationships between different cytokines, as well as to explore different distributions modelling normal, healthy human cytokine levels. The user may generate a random individual's cytokine data depending on the current data provided and have access to a couple different visualization options. The random individual will have cytokine levels dependent on the dataset's mean and variance of each cytokine level.
+
+The project is meant to be more exploratory than explanatory, although there are still some fun results to find within the data!
 
 Current objectives
 ---
@@ -17,8 +18,13 @@ Streamlit objectives
 Integrate interactivity via user input:
 - sidebar menu with cytokine selection for viewing in dataframe
 - option to generate histograms showing different distributions
-  - use seaborn to make visualization nicer
 - create boxplots,
+
+Streamlit functionality
+---
+The current streamlit site hosts a few tools to look at the data. 
+The site provides a bit of information on cytokines, some dataframes to view and generate data, 
+and a couple of visualizations to show the general shape of the data
 
 
 Data are sourced from:
@@ -33,4 +39,4 @@ To run the streamlit website:
 > pipenv install --ignore-pipfile
 
 > streamlit run st_app.py
-- The streamlit webstie should pop up in your browser!
+- The streamlit website should pop up in your browser!
