@@ -26,8 +26,21 @@ The current streamlit site hosts a few tools to look at the data.
 The site provides a bit of information on cytokines, some dataframes to view and generate data, 
 and a couple of visualizations to show the general shape of the data.
 
-- Starting from the top of the page, the introduction provides brief information on cytokines. 
-The data from the norm_cytokine_data.csv are displayed.
+### Introduction + cytokine dataframe
+Starting from the top of the page, the introduction provides brief information on cytokines. 
+The data from the norm_cytokine_data.csv are displayed as a dataframe. The sample ID is from the cytokine data,
+but I decided not to remove it. Each column contains the MFI for one individual healthy human blood sample.
+
+### Cytokine summary statistics
+Next on the page is summary statistics calculated used the .describe() function from pandas. 
+This includes the mean, median, standard deviation, etc.
+Each cytokine has 126 observations, indicating 126 different people from which the data are collected.
+This dataframe adjusts to the cytokines that have been selected on the sidebar on the left of the page. 
+Users may select certain cytokines to be displayed in this dataframe. Additionally, the text under this section
+will be updated with the selection in the sidebar.
+
+### 
+
 
 
 
