@@ -18,7 +18,7 @@ Streamlit objectives
 Integrate interactivity via user input:
 - sidebar menu with cytokine selection for viewing in dataframe
 - option to generate histograms showing different distributions
-- create boxplots,
+- show relationships between different cytokines
 
 Streamlit functionality
 ---
@@ -31,15 +31,37 @@ Starting from the top of the page, the introduction provides brief information o
 The data from the norm_cytokine_data.csv are displayed as a dataframe. The sample ID is from the cytokine data,
 but I decided not to remove it. Each column contains the MFI for one individual healthy human blood sample.
 
+### Selected cytokine dataframe
+This section has a dataframe that updates based on the sidebar selection on the left. The sidebar allows
+users to change the contents of the page based on the inputs. In this section, the sidebar menu titled
+'Cytokines used in data selection' changes which cytokines are displayed in the dataframe.
+
 ### Cytokine summary statistics
 Next on the page is summary statistics calculated used the .describe() function from pandas. 
 This includes the mean, median, standard deviation, etc.
 Each cytokine has 126 observations, indicating 126 different people from which the data are collected.
 This dataframe adjusts to the cytokines that have been selected on the sidebar on the left of the page. 
-Users may select certain cytokines to be displayed in this dataframe. Additionally, the text under this section
+Users may select certain cytokines to be displayed in this summary dataframe. Additionally, the text under this section
 will be updated with the selection in the sidebar.
 
-### 
+### Simulated histograms
+In this section, two histograms will be shown depending on the cytokine and distribution selected on the sidebar to the left. 
+The left histogram shows the cytokine levels for the normal cytokine data, while the right histogram uses randomly generated data
+depending on the selected distribution on the sidebar under 'Cytokine selection'. The user can play around with different cytokines and 
+distributions to find one that best models the normal levels of the selected cytokine. The text in this section also updates so that
+the user may collapse the sidebar and still see the current distribution and cytokine.
+
+### Correlation heatmap
+This section shows a heatmap of the selected cytokines on the sidebar under 'Cytokine selection'. The heatmap displays
+the strength of the correlation between selected cytokines, allowing users to see at a glance which cytokines are related.
+There is also the option to display the correlation coefficient on the graph. As shown, deeper red hues mean there is a stronger correlation
+between the two cytokines. 
+
+### Cytokine dataframe generation
+The last section allows for generation of a downloadable dataframe using specified cytokines and distribution on the sidebar under 
+'Cytokine selection for data generation'. The cytokines data generated here correspond to the 'Cytokines to generate' section, which is the second 
+multiselect dropdown. It has similar parameters to the previous histogram, but there is now the option to change how many 
+records/rows are in the dataframe. 
 
 
 
