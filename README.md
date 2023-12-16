@@ -24,16 +24,21 @@ Streamlit functionality
 ---
 The current streamlit site hosts a few tools to look at the data. 
 The site provides a bit of information on cytokines, some dataframes to view and generate data, 
-and a couple of visualizations to show the general shape of the data
+and a couple of visualizations to show the general shape of the data.
+
+- Starting from the top of the page, the introduction provides brief information on cytokines. 
+The data from the norm_cytokine_data.csv are displayed.
+
+
 
 
 Data are sourced from:
 - https://duke-hhis.github.io/reference-range/#/
 
 To run the streamlit website:
-- Clone the repository
-- Navigate to the DATA440_Project folder in command prompt (powershell, terminal, etc.)
-- run:
+1. Clone the repository
+2. Navigate to the DATA440_Project folder in command prompt (powershell, terminal, etc.)
+3. Run:
 > pipenv shell
 
 > pipenv install --ignore-pipfile

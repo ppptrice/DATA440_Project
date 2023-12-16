@@ -110,8 +110,7 @@ be correlated with each other).
 """)
 
 if len(selected_cyto) != 0:
-    df_selected_cyto.to_csv('output.csv',index=False)
-    corr_df = pd.read_csv('output.csv')
+    corr_df = df_selected_cyto
 
     corr_nums = st.checkbox(label = 'Display correlation numbers on heatmap?')
 
